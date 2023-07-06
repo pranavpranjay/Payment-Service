@@ -1,3 +1,4 @@
+/*
 package com.pranjay.spring.config;
 
 import com.zaxxer.hikari.HikariDataSource;
@@ -57,7 +58,7 @@ public class MySqlDataSourceConfig {
         props.put("hibernate.format_sql", true);
         //props.put("hibernate.generate_statistics", true);
         props.put("hibernate.use_sql_comments", true);
-        props.put("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
+        props.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         props.put("show-sql", true);
         entityManagerFactoryBean.setJpaPropertyMap(props);
         return entityManagerFactoryBean;
@@ -72,3 +73,4 @@ public class MySqlDataSourceConfig {
     }
 
 }
+*/

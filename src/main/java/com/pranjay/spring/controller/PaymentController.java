@@ -2,9 +2,7 @@ package com.pranjay.spring.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pranjay.spring.exceptions.ResourceNotFoundException;
 import com.pranjay.spring.models.Payment;
-import com.pranjay.spring.repository.PaymentRepository;
 import com.pranjay.spring.services.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

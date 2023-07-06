@@ -1,0 +1,45 @@
+# Define a 'Service' To Expose the application
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment-service
+spec:
+  ports:
+    - protocol: "TCP"
+      port: 8085    # Port inside the cluster
+      targetPort: 8085  # Port exposed to the outside
+  selector:
+    app: payment-v2
+  type: NodePort
+
+---
+#Application deplyment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-service-app
+spec:
+  selector:
+    matchLabels:
+      app: payment-v2
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: payment-v2
+    spec:
+      containers:
+        - name: payment-service-app
+          image: pranjaydocker/payment-service-app:1.1
+          ports:
+            - containerPort: 8085
+          env:   # Setting Environmental Variables
+            - name: DB_HOST   # Setting Database host address
+              value: mysql
+            - name: DB_NAME  # Setting Database name
+              value: kubedb
+            - name: DB_USERNAME  # Setting Database username
+              value: root
+            - name: DB_PASSWORD # Setting Database password
+              value: root
+# This seperator --- below is MANDATORY!!!
